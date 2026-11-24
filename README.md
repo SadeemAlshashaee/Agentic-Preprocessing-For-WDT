@@ -2,8 +2,7 @@
 
 Capstone experiment: can an LLM agent (Qwen3-32B) design a preprocessing plan that helps different models detect faults and cyberattacks when physical sensor data and network traffic are fused?
 
-**Author / course:** _add your name and course here_
-
+**Author / course: Sadeem Alshashaee
 ## Question
 The preprocessing plan must be **model-agnostic**: one plan that is tested on **XGBoost**, an **LSTM** and **Qwen3-32B** itself, and compared against a **no-preprocessing XGBoost baseline**.
 
