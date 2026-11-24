@@ -1,0 +1,8 @@
+step,samples,decision,reason
+alignment_tolerance 2 s,3 of 3,ACCEPT,"cheap, shared; expected near-null (coverage gain 0.0008 to 0.0024). NOTE: uses up to 2 future seconds, so it is NOT causal (offline only)."
+missing_handling ffill_causal 2 s,3 of 3,ACCEPT,"causal, low risk; affects only short gaps."
+ratio_to_recent_baseline 60 s,3 of 3,MODIFY,"columns differed per sample; human took the union (net_pkts, net_size_mean/std/max, net_resp_null_share); ratios replace the raw columns. Risk: a long attack becomes its own baseline."
+function_entropy,3 of 3,ACCEPT,"one extra column, no leakage risk."
+robust_scale_network,3 of 3,ACCEPT for LSTM only,XGBoost trees are scale-invariant; Qwen reads text. Tested in Step 22.
+drop_features sport+dport,1 of 3,ACCEPT narrow version,sample 3 version; sample 2's four-column version rejected (IP counts likely carry MITM/scan signal).
+rolling_stat mean 5 s,1 of 3,REJECT,two samples rejected rolling statistics; physical window test already failed.
